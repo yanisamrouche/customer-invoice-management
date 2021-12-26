@@ -16,3 +16,5 @@ RUN sudo apt-get update \
    xauth \
    xvfb \
  && sudo rm -rf /var/lib/apt/lists/*
+
+RUN npm install -g @angular/cli
