@@ -27,25 +27,26 @@ describe("Invoices Features", () => {
     cy.visit(BASE_URL).contains("Elise Dupont").first().click();
 
     // Après avoir cliqué, on devrait être sur la page de détails d'Elise Dupont et voir ses informations
-    // Et notamment un lien permettant de créer une invoice
-    cy.get("a.invoice-create")
+    // Et notamment un lien permettant de créer une invoice dont le texte serait "Créer une facture"
+    cy.contains("Créer une facture")
       .first()
       .click()
       .url()
       // Qui devrait nous rediriger vers /:id/invoices/add (:id étant l'identifiant d'Elise Dupont)
       .should("match", /\/\d+\/invoices\/add$/);
 
-    // On devrait trouver un champ qui a la classe 'amount'
-    cy.get("input.amount")
+    // On devrait trouver un champ dont l'attribut name serait "amount"
+    cy.get("[name=amount]")
       .type(1200) // On tape le montant 1200
-      // On devrait trouver un champ select avec la classe 'status' qui contient deux <option>
-      .get("select.status option")
+      // On devrait trouver un champ select avec l'attribut name qui serait "status" et qui contient deux <option>
+      .get("select[name=status] option")
       .should("have.length", 2)
-      .get("select.status")
+      .get("select[name=status]")
       .select("PAID") // On doit pouvoir sélectionner une option dont la valeur est "PAID" (peu importe le texte)
-      .select("SENT") // On sélectionne l'option dont la valeur est "SENT" (peu importe le texte)
-      // On cherche ensuite le bouton de soumission
-      .get("button[type=submit]")
+      .select("SENT"); // On sélectionne l'option dont la valeur est "SENT" (peu importe le texte)
+    // On cherche ensuite le bouton de soumission dont le texte devrait être "Enregistrer la facture"
+
+    cy.contains("Enregistrer la facture")
       .click()
       .url()
       // On devrait être redirigé vers le détails du client pour lequel on a créé la facture (Elise Dupont)

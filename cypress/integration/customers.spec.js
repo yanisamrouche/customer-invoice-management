@@ -14,8 +14,8 @@ describe("Customers Features", () => {
     // En visitant la page d'accueil de l'application (/)
     cy.visit(BASE_URL)
       // Je dois pouvoir trouver un lien vers la page de création d'un client
-      // qui doit rediriger sur /create
-      .get("a.create-customer")
+      // dont le texte soit "Créer un client" qui doit rediriger sur /create
+      .contains("Créer un client")
       .click()
       .url()
       .should(
@@ -24,16 +24,17 @@ describe("Customers Features", () => {
         "L'adresse aurait du changer pour '/create' après le click 😞"
       );
 
-    // Je dois pouvoir ensuite trouver un input.fullName
-    cy.get("input.fullName")
+    // Je dois pouvoir ensuite trouver un élément dont l'attribut name sera "fullName"
+    cy.get("[name=fullName]")
       // Je tape "Joseph Dupont"
       .type("Joseph Dupont")
-      // Je dois pouvoir trouver un input.email
-      .get("input.email")
+      // Je dois pouvoir trouver un élément dont l'attribut name sera "email"
+      .get("[name=email]")
       // et taper "joseph@mail.com"
-      .type("joseph@mail.com")
-      // Je dois pouvoir trouver un bouton de type submit
-      .get('button[type="submit"]')
+      .type("joseph@mail.com");
+
+    // Je dois pouvoir trouver un bouton dont le texte sera "Enregistrer"
+    cy.contains("Enregistrer")
       // Et lorsque je clique dessus, je suis redirigé vers la page d'accueil /
       .click()
       .url()
@@ -60,9 +61,11 @@ describe("Customers Features", () => {
     cy.contains("Joseph Dupont");
 
     // Je dois pouvoir y retrouver le nom complet du client
-    // Et un lien qui permette de revenir à la liste des clients (page d'accueil /)
     cy.contains("Joseph Dupont");
-    cy.get("a.back-to-customers")
+
+    // Et un lien qui permette de revenir à la liste des clients (page d'accueil /)
+    // dont le texte sera "Retour aux clients"
+    cy.contains("Retour aux clients")
       .click()
       .url()
       .should(
