@@ -1,0 +1,62 @@
+/// <reference types="Cypress" />
+
+import { API_URL, API_KEY, BASE_URL, resetDatabase } from "../utils";
+
+// Les fonctionnalités attendues pour les factures (invoices)
+describe("Invoices Features", () => {
+  // Avant chaque test, je supprime tout ce qui se trouve dans la base de données distante via une requête HTTP
+  beforeEach(() => resetDatabase());
+
+  // Testons que l'on peut bien créer une facture pour un client donné
+  it("should create and list invoices for a customer", () => {
+    // Commençons par créer un client (customer) pour notre test, nous l'appellerons Elise Dupont
+    cy.request({
+      method: "POST",
+      url: API_URL + "/customers",
+      body: {
+        fullName: "Elise Dupont",
+        email: "elise@mail.com",
+      },
+      headers: {
+        apiKey: API_KEY,
+      },
+    });
+
+    // Théoriquement on se retrouve sur la page d'accueil et on y retrouve le client qu'on vient de créer (Elise Dupont)
+    // sous la forme d'un lien cliquable
+    cy.visit(BASE_URL).contains("Elise Dupont").first().click();
+
+    // Après avoir cliqué, on devrait être sur la page de détails d'Elise Dupont et voir ses informations
+    // Et notamment un lien permettant de créer une invoice
+    cy.get("a.invoice-create")
+      .first()
+      .click()
+      .url()
+      // Qui devrait nous rediriger vers /:id/invoices/add (:id étant l'identifiant d'Elise Dupont)
+      .should("match", /\/\d+\/invoices\/add$/);
+
+    // On devrait trouver un champ qui a la classe 'amount'
+    cy.get("input.amount")
+      .type(1200) // On tape le montant 1200
+      // On devrait trouver un champ select avec la classe 'status' qui contient deux <option>
+      .get("select.status option")
+      .should("have.length", 2)
+      .get("select.status")
+      .select("PAID") // On doit pouvoir sélectionner une option dont la valeur est "PAID" (peu importe le texte)
+      .select("SENT") // On sélectionne l'option dont la valeur est "SENT" (peu importe le texte)
+      // On cherche ensuite le bouton de soumission
+      .get("button[type=submit]")
+      .click()
+      .url()
+      // On devrait être redirigé vers le détails du client pour lequel on a créé la facture (Elise Dupont)
+      .should(
+        "match",
+        /\/\d+$/,
+        "L'adresse aurait du changer pour '/:id' avec l'identifiant d'Elise Dupont 😞"
+      );
+
+    // Dans cette page, on s'attend maintenant à trouver un tableau qui liste les factures
+    // Et notamment une ligne (<tr>) qui décrirait la facture et contiendrait le montant 1200
+    cy.get("tr").contains("1200");
+  });
+});
