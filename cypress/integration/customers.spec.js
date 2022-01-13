@@ -72,25 +72,3 @@ describe("Customers Features", () => {
       );
   });
 });
-
-/**
- * Petite fonction utilitaire qui permet de supprimer tout ce qui se trouve dans les tables customers et invoices
- * de l'API SupaBase
- */
-const resetDatabase = () => {
-  cy.request({
-    method: "DELETE",
-    url: API_URL + "/invoices",
-    headers: {
-      apiKey: API_KEY,
-    },
-  });
-
-  cy.request({
-    method: "DELETE",
-    url: API_URL + "/customers",
-    headers: {
-      apiKey: API_KEY,
-    },
-  });
-};
