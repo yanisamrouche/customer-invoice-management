@@ -57,7 +57,8 @@ describe("Invoices Features", () => {
       );
 
     // Dans cette page, on s'attend maintenant à trouver un tableau qui liste les factures
+    cy.get("table");
     // Et notamment une ligne (<tr>) qui décrirait la facture et contiendrait le montant 1200
-    cy.get("tr").contains("1200");
+    cy.contains("1200");
   });
 });
