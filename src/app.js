@@ -9,12 +9,11 @@ import ReactDOM from "react-dom";
 // Routes permet de décrire la configuration des routes
 // Route permet de décrire la configuration d'une route (url => composant à afficher)
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-
 import ClientListPage from "./pages/ClientListPage";
 import CreateClientPage from "./pages/CreateClientPage";
 import ClientDetailsPage from "./pages/ClientDetailsPage";
 import CreateInvoicePage from "./pages/CreateInvoicePage";
-
+// depot : lchamla@gmail.com
 const App = () => {
     return <BrowserRouter>
         <Routes>

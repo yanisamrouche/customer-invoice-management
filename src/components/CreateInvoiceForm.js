@@ -1,28 +1,32 @@
 import React , { useState } from "react";
+import Select from "react-select";
 import {Link} from "react-router-dom";
 
 const CreateInvoiceForm = (props) => {
     // état
     const [price, setPrice] = useState('');
-    const [status, setStatus] = useState('');
-
+    const options = [
+        { value: "Envoyée", label: "Envoyée" },
+        { value: "Payée", label: "Payée" },
+    ];
+    const [selected, setSelected] = useState(null);
     // traitement
     const handleSubmit = (event) => {
         // Annulons le comportement par défaut de l'événement
         // qui serait de recharger la page
         event.preventDefault();
-        console.log(price, status)
-        props.onInvoiceAdded(price, status)
+        console.log("==>",price, selected.value)
+        props.onInvoiceAdded(price, selected.value)
         setPrice('')
 
     }
-
     const handlePriceChange = (event) => {
         setPrice(event.target.value)
     }
-    const handleStatusChange = (event) => {
-        setStatus(event.target.value)
-    }
+    const handleChange = (selectedOption) => {
+        setSelected(selectedOption);
+        console.log(`Option selected:`, selectedOption);
+    };
     // Affichage
     return <>
         <h3> Créer une facture </h3>
@@ -34,10 +38,7 @@ const CreateInvoiceForm = (props) => {
                 value={price}
                 onChange={handlePriceChange}
             />
-            <select name="invoices" id="invoices" onChange={handleStatusChange}  autoFocus={true}>
-                <option value={status}>Envoyée</option>
-                <option value={status}>Payée</option>
-            </select>
+            <Select options={options} onChange={handleChange} autoFocus={true} />
             <button>Enregistrer la facture</button>
         </form>
     </>
