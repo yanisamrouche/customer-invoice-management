@@ -26,7 +26,7 @@ const CreateClientForm = (props) => {
     // Affichage
     return <>
         <h3> Créer un client </h3>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit}>-
             <input
                 type="text"
                 name="fullName"

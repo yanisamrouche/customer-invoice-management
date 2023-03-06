@@ -13,10 +13,15 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ClientListPage from "./pages/ClientListPage";
 import CreateClientPage from "./pages/CreateClientPage";
 import ClientDetailsPage from "./pages/ClientDetailsPage";
+import CreateInvoicePage from "./pages/CreateInvoicePage";
 
 const App = () => {
     return <BrowserRouter>
         <Routes>
+            <Route
+                path="/:id/invoices/add"
+                element={<CreateInvoicePage />}
+            />
             <Route
                 path="/:id/details"
                 element={<ClientDetailsPage />}

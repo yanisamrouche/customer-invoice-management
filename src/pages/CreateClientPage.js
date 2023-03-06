@@ -9,7 +9,6 @@ const CreateClientPage = (props) => {
 
     // traitement
     const addNewClient = (name, email) => {
-        // Créons une nouvelle tâche avec le text tapé dans l'input
         const client = {
             name: name,
             email: email,

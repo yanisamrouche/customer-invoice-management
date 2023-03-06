@@ -3,7 +3,7 @@
 import React, {useEffect, useState} from "react";
 import ClientList from "../components/ClientList";
 import CreateClientForm from "../components/CreateClientForm";
-import {addClientToApi, loadClientsFromApi} from "../api/http";
+import {loadClientsFromApi} from "../api/http";
 
 const ClientListPage = () => {
     // état
