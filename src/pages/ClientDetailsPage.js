@@ -15,7 +15,7 @@ const ClientDetailsPage = () => {
     useEffect(() => {
         loadClientFromApi(id)
             .then(apiTask => setClient(apiTask));
-        async function fetchInvoices() {
+        async function fetchInvoices(id) {
             try {
                 // Fetch all invoices for the specified client_id
                 const { data, error } = await supabase
@@ -29,7 +29,7 @@ const ClientDetailsPage = () => {
             }
         }
 
-        fetchInvoices().then(r => console.log(r));
+        fetchInvoices(id);
     }, [id])
 
     // En fonction du state "task" (null ou pas), on retourne
