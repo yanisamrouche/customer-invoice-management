@@ -22,6 +22,8 @@ const ClientDetailsPage = () => {
             <h2>{client.name}</h2>
             <h3>{client.email}</h3>
             <br />
+            <Link to={`/${client.id}/invoices/add`}>Créer une facture</Link>
+            <br />
             <Link to="/">Retour </Link>
         </>
         :

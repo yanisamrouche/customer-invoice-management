@@ -10,10 +10,10 @@ const ClientList = ({ clients }) => {
         <h1>Liste des clients</h1>
         <Link to={"/create"}>Créer un client</Link>
         <ul>
-            {clients.map(item => (
-                <li key={item.id}>
-                    {item.name} | {item.email}
-                    <Link to={item.id + "/details"}>Details</Link>
+            {clients.map(client => (
+                <li key={client.id}>
+                    {client.name} | {client.email}
+                    <Link to={client.id + "/details"}>Details</Link>
                 </li>
                 )
             )

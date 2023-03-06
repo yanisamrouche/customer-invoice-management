@@ -1,12 +1,11 @@
 import React  from "react";
-import ClientListPage from "./ClientListPage";
 import CreateClientForm from "../components/CreateClientForm";
 import {addClientToApi} from "../api/http";
-
-const CreateClientPage = () => {
+import { useNavigate } from "react-router-dom"
+const CreateClientPage = (props) => {
 
     // état
-
+    const navigate = useNavigate() // useHistory
 
     // traitement
     const addNewClient = (name, email) => {
@@ -17,6 +16,7 @@ const CreateClientPage = () => {
         };
         // Appel HTTP vers Supabase en method POST
         addClientToApi(client).then(() => {
+            navigate('/')
         })
     }
 
