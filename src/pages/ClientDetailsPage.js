@@ -25,23 +25,26 @@ const ClientDetailsPage = () => {
     // un arbre JSX différent
     return client ?
         <>
-            <h2>{client.name}</h2>
-            <h3>{client.email}</h3>
+         <div className="jumbotron">
+            <h2 className="text-center my-4">{client.name}</h2>
+            <h3 className="text-center my-4">{client.email}</h3>
             <br />
-            <Link to={`/${client.id}/invoices/add`}>Créer une facture</Link>
+            <Link className="btn btn-outline-primary" to={`/${client.id}/invoices/add`}>Créer une facture</Link>
             <br />
             <div>
-                <ul>
+                <ul className="list-group">
                     {invoices.map(invoice => (
-                            <li key={invoice.id}>
-                                {invoice.price} | {invoice.status}
+                            <li className="list-group-item d-flex justify-content-between align-items-center" key={invoice.id}>
+                                 <span>{invoice.price} €</span> 
+                                 <span>{invoice.status}</span>
                             </li>
                         )
                     )
                     }
                 </ul>
             </div>
-            <Link to="/">Retour </Link>
+            <Link className="btn btn-outline-secondary" to="/">Retour </Link>
+         </div>
         </>
         :
         <p>Chargement en cours</p>

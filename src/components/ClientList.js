@@ -7,19 +7,23 @@ const ClientList = ({ clients }) => {
 
     // Affichage
     return <>
-        <h1>Liste des clients</h1>
-        <Link to={"/create"}>Créer un client</Link>
-        <ul>
-            {clients.map(client => (
-                <li key={client.id}>
-                    {client.name} | {client.email}
-                    <Link to={client.id + "/details"}>Details</Link>
-                </li>
+        <div className="jumbotron">
+            <h1  className="text-center my-4">Liste des clients</h1>
+            <Link className="btn btn-outline-primary" to={"/create"}>Créer un client</Link>
+        
+            <ul className="list-group">
+                {
+                clients.map(client => (
+                    <li className="list-group-item d-flex justify-content-between align-items-center" key={client.id}>
+                        <span>{client.name}</span>
+                        <span>{client.email}</span>
+                        <Link className="badge badge-primary badge-pill" to={client.id + "/details"}>Détails</Link>
+                    </li>
+                    )
                 )
-            )
-            }
-
-        </ul>
+                }
+            </ul>
+        </div>
     </>
 }
 

@@ -25,24 +25,38 @@ const CreateClientForm = (props) => {
     }
     // Affichage
     return <>
-        <h3> Créer un client </h3>
-        <form onSubmit={handleSubmit}>-
-            <input
-                type="text"
-                name="fullName"
-                placeholder="Nom complet"
-                value={name}
-                onChange={handleNameChange}
-            />
-            <input
-                type="email"
-                name="email"
-                placeholder="email"
-                value={email}
-                onChange={handleEmailChange}
-            />
-            <button>Enregistrer</button>
-        </form>
+        <div className="container">
+            <div className="row">
+                <div className="col d-flex justify-content-center align-items-center">
+                    <div>
+                        <h3 className="text-center my-4"> Créer un client </h3>
+                        <form onSubmit={handleSubmit}>
+                            <div className="form-group">
+                                <input
+                                    className="form-control"
+                                    type="text"
+                                    name="fullName"
+                                    placeholder="Nom complet"
+                                    value={name}
+                                    onChange={handleNameChange}
+                                />
+                            </div>
+                            <div className="form-group">
+                                <input
+                                    className="form-control"
+                                    type="email"
+                                    name="email"
+                                    placeholder="email"
+                                    value={email}
+                                    onChange={handleEmailChange}
+                                />
+                            </div>
+                            <button class="btn btn-primary">Enregistrer</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </>
 }
 

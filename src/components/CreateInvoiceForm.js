@@ -33,18 +33,31 @@ const CreateInvoiceForm = (props) => {
     };
     // Affichage
     return <>
-        <h3> Créer une facture </h3>
-        <form onSubmit={handleSubmit}>
-            <input
-                type="text"
-                name="fullName"
-                placeholder="Montant de la facture"
-                value={price}
-                onChange={handlePriceChange}
-            />
-            <Select options={options} onChange={handleChange} autoFocus={true} />
-            <button>Enregistrer la facture</button>
-        </form>
+    <div className="container">
+            <div className="row">
+                <div className="col d-flex justify-content-center align-items-center">
+                    <div>
+                        <h3 className="text-center my-4"> Créer une facture </h3>
+                        <form onSubmit={handleSubmit}>
+                        <div className="form-group">
+                            <input
+                                className="form-control"
+                                type="text"
+                                name="fullName"
+                                placeholder="Montant de la facture"
+                                value={price}
+                                onChange={handlePriceChange}
+                            />
+                        </div>
+                        <div className="form-group">
+                            <Select options={options} onChange={handleChange} autoFocus={true} />
+                        </div>
+                        <button  class="btn btn-primary">Enregistrer la facture</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+    </div>
     </>
 }
 
