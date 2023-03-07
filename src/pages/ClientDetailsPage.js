@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Link, useParams} from "react-router-dom";
-import {loadClientFromApi} from "../api/http";
+import {loadClientFromApi, loadInvoicesFromApi} from "../api/http";
 import { supabase } from '../api/supabaseClient';
 
 const ClientDetailsPage = () => {
@@ -15,21 +15,14 @@ const ClientDetailsPage = () => {
     useEffect(() => {
         loadClientFromApi(id)
             .then(apiTask => setClient(apiTask));
-        async function fetchInvoices(id) {
-            try {
-                // Fetch all invoices for the specified client_id
-                const { data, error } = await supabase
-                    .from('invoices')
-                    .select('*')
-                    .eq('client_id', id);
-
-                setInvoices(data);
-            } catch (error) {
-                console.error(error);
-            }
-        }
-
-        fetchInvoices(id);
+        loadInvoicesFromApi(id)
+            .then((items) => {
+            console.log("XXXX:", items)
+            // On remplace la valeur actuel de state
+            // par le tableau d'items venant de l'API
+            setInvoices(items);
+        
+        })
     }, [id])
 
     // En fonction du state "task" (null ou pas), on retourne

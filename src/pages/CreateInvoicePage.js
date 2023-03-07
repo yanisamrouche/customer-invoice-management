@@ -7,11 +7,13 @@ const CreateInvoicePage = () => {
     // état
     const navigate = useNavigate() // useHistory
 
+
     // traitement
-    const addNewInvoice = (price, status) => {
+    const addNewInvoice = (price, status, id) => {
         const invoice = {
             price: price,
             status: status,
+            clientid: id,
         };
         // Appel HTTP vers Supabase en method POST
         addInvoiceToApi(invoice).then(() => {

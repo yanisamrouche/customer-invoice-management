@@ -1,6 +1,6 @@
 import React , { useState } from "react";
 import Select from "react-select";
-import {Link} from "react-router-dom";
+import {Link, useParams} from "react-router-dom";
 
 const CreateInvoiceForm = (props) => {
     // état
@@ -10,13 +10,16 @@ const CreateInvoiceForm = (props) => {
         { value: "Payée", label: "Payée" },
     ];
     const [selected, setSelected] = useState(null);
+    const params = useParams();
+
+    const id = +params.id;
     // traitement
     const handleSubmit = (event) => {
         // Annulons le comportement par défaut de l'événement
         // qui serait de recharger la page
         event.preventDefault();
         console.log("==>",price, selected.value)
-        props.onInvoiceAdded(price, selected.value)
+        props.onInvoiceAdded(price, selected.value, id)
         setPrice('')
 
     }
