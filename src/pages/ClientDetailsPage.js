@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {Link, useParams} from "react-router-dom";
 import {loadClientFromApi, loadInvoicesFromApi} from "../api/http";
-import { supabase } from '../api/supabaseClient';
 
 const ClientDetailsPage = () => {
 
@@ -17,9 +16,6 @@ const ClientDetailsPage = () => {
             .then(apiTask => setClient(apiTask));
         loadInvoicesFromApi(id)
             .then((items) => {
-            console.log("XXXX:", items)
-            // On remplace la valeur actuel de state
-            // par le tableau d'items venant de l'API
             setInvoices(items);
         
         })
@@ -43,7 +39,6 @@ const ClientDetailsPage = () => {
                         )
                     )
                     }
-
                 </ul>
             </div>
             <Link to="/">Retour </Link>

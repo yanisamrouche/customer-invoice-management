@@ -1,12 +1,13 @@
 import React  from "react";
 import CreateInvoiceForm from "../components/CreateInvoiceForm";
 import {addInvoiceToApi} from "../api/http";
-import { useNavigate } from "react-router-dom"
+import { useNavigate, useParams } from "react-router-dom"
 const CreateInvoicePage = () => {
 
     // état
     const navigate = useNavigate() // useHistory
-
+    const params = useParams();
+    
 
     // traitement
     const addNewInvoice = (price, status, id) => {
@@ -15,9 +16,10 @@ const CreateInvoicePage = () => {
             status: status,
             clientid: id,
         };
+        let idx = +params.id;
         // Appel HTTP vers Supabase en method POST
         addInvoiceToApi(invoice).then(() => {
-            navigate('/')
+            navigate(`/${idx}/details`)
         })
     }
 
