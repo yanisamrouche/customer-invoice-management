@@ -1,5 +1,5 @@
 {
-  "name": "Application de gestion de clients et factures",
+  "name": "amu-frontend-eval",
   "version": "1.0.0",
   "description": "Application de gestion de clients et factures",
   "main": "jest.config.js",
@@ -18,15 +18,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/liorchamla/amu-tp-react-todo.git"
+    "url": "git+https://github.com/liorchamla/amu-frontend-eval.git"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/liorchamla/amu-tp-react-todo/issues"
+    "url": "https://github.com/liorchamla/amu-frontend-eval/issues"
   },
-  "homepage": "https://github.com/liorchamla/amu-tp-react-todo#readme",
+  "homepage": "https://github.com/liorchamla/amu-frontend-eval#readme",
   "devDependencies": {
     "@babel/cli": "^7.21.0",
     "@babel/core": "^7.21.0",
