@@ -15,7 +15,7 @@ const ClientList = ({ clients }) => {
                 {
                 clients.map(client => (
                     <li className="list-group-item d-flex justify-content-between align-items-center" key={client.id}>
-                        <span>{client.name}</span>
+                        <span>{client.fullName}</span>
                         <span>{client.email}</span>
                         <Link className="badge badge-primary badge-pill" to={client.id + "/details"}>Détails</Link>
                     </li>

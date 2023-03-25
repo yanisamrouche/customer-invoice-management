@@ -26,7 +26,7 @@ const ClientDetailsPage = () => {
     return client ?
         <>
          <div className="jumbotron">
-            <h2 className="text-center my-4">{client.name}</h2>
+            <h2 className="text-center my-4">{client.fullName}</h2>
             <h3 className="text-center my-4">{client.email}</h3>
             <br />
             <Link className="btn btn-outline-primary" to={`/${client.id}/invoices/add`}>Créer une facture</Link>
