@@ -31,18 +31,23 @@ const ClientDetailsPage = () => {
             <br />
             <Link className="btn btn-outline-primary" to={`/${client.id}/invoices/add`}>Créer une facture</Link>
             <br />
-            <div>
-                <ul className="list-group">
-                    {invoices.map(invoice => (
-                            <li className="list-group-item d-flex justify-content-between align-items-center" key={invoice.id}>
-                                 <span>{invoice.price} €</span> 
-                                 <span>{invoice.status}</span>
-                            </li>
-                        )
+            
+            <table>
+                <tr>
+                    <td>Prix</td>
+                    <td>Status</td>
+                </tr>
+                {invoices.map(invoice => 
+                    (
+                        <tr key={invoice.id}>
+                                <td> {invoice.price} € </td> 
+                                <td> {invoice.status} </td>
+                        </tr>
                     )
-                    }
-                </ul>
-            </div>
+                )
+                }
+            </table>
+            
             <Link className="btn btn-outline-secondary" to="/">Retour </Link>
          </div>
         </>

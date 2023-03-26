@@ -6,8 +6,8 @@ const CreateInvoiceForm = (props) => {
     // état
     const [price, setPrice] = useState('');
     const options = [
-        { value: "Envoyée", label: "Envoyée" },
-        { value: "Payée", label: "Payée" },
+        { value: "PAID", label: "Payée" },
+        { value: "SEND", label: "Envoyée" },
     ];
     const [selected, setSelected] = useState(null);
 
