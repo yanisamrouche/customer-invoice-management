@@ -31,24 +31,27 @@ const ClientDetailsPage = () => {
             <br />
             <Link className="btn btn-outline-primary" to={`/${client.id}/invoices/add`}>Créer une facture</Link>
             <br />
-            
+
             <table>
+                <thead>
                 <tr>
                     <td>Prix</td>
                     <td>Status</td>
                 </tr>
-                {invoices.map(invoice => 
-                    (
+                </thead>
+                <tbody>
+
+                {invoices.map(invoice => (
                         <tr key={invoice.id}>
-                                <td> {invoice.price} € </td> 
-                                <td> {invoice.status} </td>
+                                <td>{invoice.price} €</td> 
+                                <td>{invoice.status}</td>
                         </tr>
                     )
                 )
                 }
+                </tbody>
             </table>
-            
-            <Link className="btn btn-outline-secondary" to="/">Retour </Link>
+            <Link className="btn btn-outline-secondary" to="/">Retour aux clients</Link>
          </div>
         </>
         :

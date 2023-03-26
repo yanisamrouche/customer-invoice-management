@@ -1,0 +1,19 @@
+table{
+    width: 100%;
+    border-collapse: collapse;
+    border-radius: 16px;
+    overflow: hidden;
+    
+}
+thead {
+	background-color: #333;
+	color: white;
+	text-transform: uppercase;
+	letter-spacing: 2%;
+}
+
+th, td {
+    border: 1px solid black;
+    text-align: center;
+    padding: 1em;
+}

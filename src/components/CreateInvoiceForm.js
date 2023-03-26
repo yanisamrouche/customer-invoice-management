@@ -5,10 +5,6 @@ import {Link, useParams, useNavigate} from "react-router-dom";
 const CreateInvoiceForm = (props) => {
     // état
     const [price, setPrice] = useState('');
-    const options = [
-        { value: "PAID", label: "Payée" },
-        { value: "SEND", label: "Envoyée" },
-    ];
     const [selected, setSelected] = useState(null);
 
     const params = useParams();
@@ -19,7 +15,8 @@ const CreateInvoiceForm = (props) => {
         // Annulons le comportement par défaut de l'événement
         // qui serait de recharger la page
         event.preventDefault();
-        props.onInvoiceAdded(price, selected.value, id)
+        console.log("selected -->", selected)
+        props.onInvoiceAdded(price, selected, id)
         setPrice('')
 
 
@@ -27,9 +24,11 @@ const CreateInvoiceForm = (props) => {
     const handlePriceChange = (event) => {
         setPrice(event.target.value)
     }
-    const handleChange = (selectedOption) => {
-        setSelected(selectedOption);
-        console.log(`Option selected:`, selectedOption);
+    const handleChange = (event) => {
+        const option = event.target.options[event.target.selectedIndex];
+        const text = option.dataset.text;
+        console.log('option =>>>', text);
+        setSelected(text);
     };
     // Affichage
     return <>
@@ -43,16 +42,20 @@ const CreateInvoiceForm = (props) => {
                             <input
                                 className="form-control"
                                 type="text"
-                                name="fullName"
+                                name="amount"
                                 placeholder="Montant de la facture"
                                 value={price}
                                 onChange={handlePriceChange}
                             />
                         </div>
                         <div className="form-group">
-                            <Select options={options} onChange={handleChange} autoFocus={true} />
+                        <select name="status" onChange={handleChange} >
+                            <option value="" data-text="">----</option>
+                            <option value="PAID" data-text="Payée">Payée</option>
+                            <option value="SEND" data-text="Envoyée">Envoyée</option>
+                        </select>
                         </div>
-                        <button  class="btn btn-primary">Enregistrer la facture</button>
+                        <button  className="btn btn-primary">Enregistrer la facture</button>
                         </form>
                     </div>
                 </div>
