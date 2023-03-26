@@ -1,27 +1,31 @@
 import React  from "react";
-import CreateClientForm from "../components/CreateClientForm";
-import {addClientToApi} from "../api/http";
-import { useNavigate } from "react-router-dom"
-const CreateClientPage = (props) => {
+import CreateInvoiceForm from "../components/CreateInvoiceForm";
+import {addInvoiceToApi} from "../api/http";
+import { useNavigate, useParams } from "react-router-dom"
+const CreateInvoicePage = () => {
 
     // état
     const navigate = useNavigate() // useHistory
+    const params = useParams();
+    
 
     // traitement
-    const addNewClient = (name, email) => {
-        const client = {
-            name: name,
-            email: email,
+    const addNewInvoice = (price, status, id) => {
+        const invoice = {
+            price: price,
+            status: status,
+            clientid: id,
         };
+        let idx = +params.id;
         // Appel HTTP vers Supabase en method POST
-        addClientToApi(client).then(() => {
-            navigate('/')
+        addInvoiceToApi(invoice).then(() => {
+            navigate(`/${idx}/details`)
         })
     }
 
     // affichage
     return <>
-        <CreateClientForm onClientAdded = {addNewClient} />
+        <CreateInvoiceForm onInvoiceAdded = {addNewInvoice} />
     </>
 }
-export default CreateClientPage;
+export default CreateInvoicePage;
