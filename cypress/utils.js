@@ -12,24 +12,20 @@ export const API_KEY =
  * Petite fonction utilitaire qui permet de supprimer tout ce qui se trouve dans les tables customers et invoices
  * de l'API SupaBase
  */
-export const resetDatabase = async () => {
-  const supabase = createClient(API_URL, API_KEY);
+export const resetDatabase = () => {
+  cy.request({
+    method: "DELETE",
+    url: API_URL + "/invoices?id=gt.0",
+    headers: {
+      apiKey: API_KEY,
+    },
+  });
 
-  await supabase.from("invoices").delete();
-  await supabase.from("customers").delete();
-  // cy.request({
-  //   method: "DELETE",
-  //   url: API_URL + "/invoices",
-  //   headers: {
-  //     apiKey: API_KEY,
-  //   },
-  // });
-
-  // cy.request({
-  //   method: "DELETE",
-  //   url: API_URL + "/customers",
-  //   headers: {
-  //     apiKey: API_KEY,
-  //   },
-  // });
+  cy.request({
+    method: "DELETE",
+    url: API_URL + "/customers?id=gt.0",
+    headers: {
+      apiKey: API_KEY,
+    },
+  });
 };

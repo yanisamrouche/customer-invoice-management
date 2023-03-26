@@ -50,9 +50,8 @@ const CreateInvoiceForm = (props) => {
                         </div>
                         <div className="form-group">
                         <select name="status" onChange={handleChange} >
-                            <option value="" data-text="">----</option>
                             <option value="PAID" data-text="Payée">Payée</option>
-                            <option value="SEND" data-text="Envoyée">Envoyée</option>
+                            <option value="SENT" data-text="Envoyée">Envoyée</option>
                         </select>
                         </div>
                         <button  className="btn btn-primary">Enregistrer la facture</button>

@@ -22,7 +22,7 @@ const App = () => {
                 element={<CreateInvoicePage />}
             />
             <Route
-                path="/:id/details"
+                path="/:id"
                 element={<ClientDetailsPage />}
             />
             <Route

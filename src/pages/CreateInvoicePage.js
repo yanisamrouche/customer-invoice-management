@@ -19,7 +19,7 @@ const CreateInvoicePage = () => {
         let idx = +params.id;
         // Appel HTTP vers Supabase en method POST
         addInvoiceToApi(invoice).then(() => {
-            navigate(`/${idx}/details`)
+            navigate(`/${idx}`)
         })
     }
 

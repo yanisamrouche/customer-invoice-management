@@ -24,9 +24,9 @@ const ClientList = ({ clients }) => {
                 {
                 clients.map(client => (
                     <tr key={client.id}>
-                        <td><Link className="badge badge-dark badge-pill" to={client.id + "/details"}>{client.fullName}</Link> </td>
-                        <td><Link className="badge badge-dark badge-pill" to={client.id + "/details"}>{client.email}</Link></td>
-                        <td><Link className="badge badge-dark badge-pill" to={client.id + "/details"}>Détails</Link></td>
+                        <td><Link className="badge badge-dark badge-pill" to={"/"+client.id}>{client.fullName}</Link> </td>
+                        <td><Link className="badge badge-dark badge-pill" to={"/"+client.id}>{client.email}</Link></td>
+                        <td><Link className="badge badge-dark badge-pill" to={"/"+client.id}>Détails</Link></td>
                     </tr>
                     )
                 )
