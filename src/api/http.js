@@ -10,7 +10,7 @@ export const loadClientsFromApi = () => {
 }
 
 export const addClientToApi = (client) => {
-    return fetch(`${SUPABASE_URL}/customers`, {
+    return fetch(`https://fdezozztgafhxkllqbnh.supabase.co/rest/v1/customers`, {
         method: "POST",
         body: JSON.stringify(client),
         headers: {

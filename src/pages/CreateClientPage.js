@@ -10,7 +10,7 @@ const CreateClientPage = (props) => {
     // traitement
     const addNewClient = (name, email) => {
         const client = {
-            name: name,
+            fullName: name,
             email: email,
         };
         // Appel HTTP vers Supabase en method POST
