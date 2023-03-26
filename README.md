@@ -37,12 +37,15 @@ Vous devrez envoyer par mail (donné lors du cours) un lien vers un dépôt Git.
 En tant que correcteur, je dois pouvoir corriger de cette façon :
 
 ```bash
+
 # télécharger votre projet :
 git clone url_de_votre_projet
 
 # entrer dans le dossier
 cd votre_application
-
+#web pack
+npm install --save-dev webpack webpack-cli
+npm run dev
 # lancer l'application :
 npm run serve
 
