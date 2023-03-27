@@ -29,7 +29,7 @@ const ClientDetailsPage = () => {
             <h2 className="text-center my-4">{client.fullName}</h2>
             <h3 className="text-center my-4">{client.email}</h3>
             <br />
-            <Link className="btn btn-outline-primary" to={`/${client.id}/invoices/add`}>Créer une facture</Link>
+            <Link id="client-register"  className="btn btn-outline-primary" to={`/${client.id}/invoices/add`}>Créer une facture</Link>
             <br />
 
             <table>
@@ -43,8 +43,8 @@ const ClientDetailsPage = () => {
 
                 {invoices.map(invoice => (
                         <tr key={invoice.id}>
-                                <td>{invoice.price} €</td> 
-                                <td>{invoice.status}</td>
+                                <td><Link className="badge badge-dark badge-pill">{invoice.price} €</Link></td> 
+                                <td><Link className="badge badge-dark badge-pill">{invoice.status}</Link></td>
                         </tr>
                     )
                 )

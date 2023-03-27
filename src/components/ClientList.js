@@ -9,7 +9,7 @@ const ClientList = ({ clients }) => {
     return <>
         <div className="jumbotron">
             <h1  className="text-center my-4">Liste des clients</h1>
-            <Link className="btn btn-outline-dark" to={"/create"}>Créer un client</Link>
+            <Link id="create-client-btn" className="btn btn-outline-dark" to={"/create"}>Créer un client</Link>
         
             <table>
                 <thead>

@@ -51,7 +51,7 @@ const CreateClientForm = (props) => {
                                     onChange={handleEmailChange}
                                 />
                             </div>
-                            <button className="btn btn-primary">Enregistrer</button>
+                            <button id="client-register" className="btn btn-primary">Enregistrer</button>
                         </form>
                     </div>
                 </div>
