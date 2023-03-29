@@ -5,7 +5,7 @@ import {Link, useParams, useNavigate} from "react-router-dom";
 const CreateInvoiceForm = (props) => {
     // état
     const [price, setPrice] = useState('');
-    const [selected, setSelected] = useState(null);
+    const [selected, setSelected] = useState('Payée');
 
     const params = useParams();
 
@@ -18,8 +18,7 @@ const CreateInvoiceForm = (props) => {
         console.log("selected -->", selected)
         props.onInvoiceAdded(price, selected, id)
         setPrice('')
-
-
+        setSelected('Payée')
     }
     const handlePriceChange = (event) => {
         setPrice(event.target.value)
