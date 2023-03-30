@@ -44,7 +44,7 @@ git clone url_de_votre_projet
 # entrer dans le dossier
 cd votre_application
 #web pack
-npm install --save-dev webpack webpack-cli
+npm install 
 npm run dev
 # lancer l'application :
 npm run serve
