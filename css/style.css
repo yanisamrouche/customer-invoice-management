@@ -1,8 +1,7 @@
 /* Police de caractères globale */
 body {
-    font-family: Arial, sans-serif;    
+    font-family: Arial, sans-serif; 
 }
-  
   /* Styles pour le tableau de clients */
   table {
     border-collapse: collapse;
@@ -12,6 +11,8 @@ body {
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
     border-radius: 10px;
     overflow: hidden;
+    margin: auto;
+    width: 50% !important; 
   }
   
   th, td {
@@ -25,12 +26,12 @@ body {
   }
   
   tr:hover {
-    background-color: #f5f5f5;
+    background-color: #ccc;
   }
   
   /* Styles pour le bouton "Créer un client" */
   #create-client-btn {
-    display: inline-block;
+    display: block;
     padding: 12px 24px;
     font-size: 16px;
     font-weight: bold;
@@ -39,6 +40,7 @@ body {
     background-color: #164355;
     border-radius: 4px;
     transition: background-color 0.3s ease;
+    width: 50%;
   }
   
   #create-client-btn:hover {

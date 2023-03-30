@@ -25,13 +25,27 @@ const ClientDetailsPage = () => {
     // un arbre JSX différent
     return client ?
         <>
-         <div className="jumbotron">
-            <h2 className="text-center my-4">{client.fullName}</h2>
-            <h3 className="text-center my-4">{client.email}</h3>
-            <br />
-            <Link id="client-register"  className="btn btn-outline-primary" to={`/${client.id}/invoices/add`}>Créer une facture</Link>
-            <br />
+         <div className="container">
+            <div className="row">
+                <div className="col d-flex justify-content-center align-items-center">
+                    <h2 className="text-center my-4">{client.fullName} </h2>
+                </div>
+            </div>
+            <div className="row">
+                <div className="col d-flex justify-content-center align-items-center">
+                <h3 className="text-center my-4">{client.email}</h3>
 
+                </div>
+
+            </div>
+            <div className="row">
+              <div className="col d-flex justify-content-center align-items-center">
+                      <Link  className="btn btn-outline-secondary" to="/">Retour aux clients</Link>
+                      <Link id="client-register"  className="btn btn-outline-primary" to={`/${client.id}/invoices/add`}>Créer une facture</Link>
+                </div>
+            </div>
+   
+            <div className="row" >
             <table>
                 <thead>
                 <tr>
@@ -51,7 +65,7 @@ const ClientDetailsPage = () => {
                 }
                 </tbody>
             </table>
-            <Link className="btn btn-outline-secondary" to="/">Retour aux clients</Link>
+            </div>
          </div>
         </>
         :
